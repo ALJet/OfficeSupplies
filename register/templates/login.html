@@ -1,0 +1,55 @@
+{% extends 'base1.html' %}
+{% load staticfiles %}
+{% block title %}登录{% endblock %}
+{% block css %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <h1>办公用品领用登记系统</h1>
+    <div class="login-form">
+        <div class="close"></div>
+        <div class="head-info">
+            <label class="lbl-1"> </label>
+            <label class="lbl-2"> </label>
+            <label class="lbl-3"> </label>
+        </div>
+        <div class="clear"></div>
+        <div class="avtar">
+            <img src="{% static 'images/avtar.png' %}"/>
+
+        </div>
+        <form action="{% url 'register:login' %}" method="post">
+
+
+
+            {% csrf_token %}
+            <input name='username' type="text" class="text"  placeholder="用户名" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = '用户名';}">
+            <div class="key">
+                <input name='password' type="password" placeholder="密码" onfocus="this.value = '';"
+                       onblur="if (this.value == '') {this.value = 'Password';}">
+
+                {% if message %}
+                <div><span style="color: red">{{ message }}</span></div>
+              {% endif %}
+
+            </div>
+
+
+
+            <div class="signin">
+            <input type="submit" value="登录">
+        </div>
+        </form>
+
+    </div>
+    <div class="copy-rights">
+        <p>Copyright &copy;  LJL</a>
+        </p>
+    </div>
+
+
+
+{% endblock %}
